@@ -14,11 +14,6 @@ export const getProducts = async ({ limit = 10, page = 1 } = {}) => {
   return res.json();
 };
 
-export const getProductsByCatergory= async({catergory}) =>{
-  const res = await fetch(`https://dummyjson.com/products/category/${catergory}`)
-
-  return res.json()
-}
 
 
 export const searchProducts = async ({ limit = 10, page = 1, q }) => {
@@ -38,3 +33,8 @@ export const getProductById = async ({ id }) => {
 }
 
 
+export const getProductsByCatergory= async(catergory) =>{
+  const res = await fetch(`https://dummyjson.com/products/category/${catergory}`)
+
+  return res.json()
+}

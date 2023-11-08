@@ -311,6 +311,99 @@ span{
 .transport-item .heading{
   line-height: 50px;
 }
+.girlItem{
+  padding: 30px;
+  border-radius: 20px;
+}
+.girlItem p{
+  line-height: 30px;
+  padding-top: 30px;
+}
+.iconGrid{
+  font-size: 50px;
+}
+.headingGrid{
+  font-weight: 500;
+}
+
+@media (max-width:768px){
+  
+}
+
+/*Contact*/
+.contact-Container{
+  width: 70%;
+  margin: 0 auto;
+}
+.form{
+  width: 55%;
+  height: 600px;
+  margin: 30px auto;
+  box-shadow: 5px 4px 30px rgb(204, 200, 200);
+  padding: 30px;
+  border-radius: 20px;
+ 
+}
+.icon-pageContact{
+  font-size: 30px;
+  
+}
+.heading-contact{
+  font-size: 24px;
+}
+
+@media (max-width:768px){
+  
+}
+
+/*ProductList*/
+.heading-categories{
+  padding-bottom: 30px;
+}
+.categories ul li{
+  padding: 10px 0px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  list-style: none;
+}
+.categories ul li:hover{
+  background-color: #FFC501;
+}
+.list-products{
+  padding-left: 50px;
+}
+.productsList:hover{
+  color: #FFC501;
+}
+
+@media (max-width:768px){
+  
+}
+
+/*ProductID*/
+.detai-Products{
+  margin-top: 50px;
+}
+
+@media (max-width:768px){
+  
+}
+/*ProductImage*/
+.imgDetail{
+  width: 100%;
+  height: 400px;
+}
+.icon-Previous,.icon-Next{
+font-size: 32px;
+}
+.imgList{
+  margin-top: 100px;
+  padding: 0 30px;
+}
+.img-list-detail{
+  width: 100%;
+  height: 150px;
+}
 
 @media (max-width:768px){
   
