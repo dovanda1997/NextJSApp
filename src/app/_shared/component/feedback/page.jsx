@@ -28,9 +28,9 @@ export default async function Feedback() {
             Mua sắm ở đây rất là thích, nhanh gọn, tiện lợi, giá cả rẻ
           </Heading>
           <p>
-            &quot; Tôi rất thích mua sắm ở đây, hàng hóa đa dạng nhiều mẫu mã,
-            sản phẩm chất lượng mà nhân viên phục vụ rất chu đáo hướng dẫn tỉ mỉ
-            thái độ rất tốt rất đáng để mua sắm &quot;
+            Tôi rất thích mua sắm ở đây, hàng hóa đa dạng nhiều mẫu mã, sản phẩm
+            chất lượng mà nhân viên phục vụ rất chu đáo hướng dẫn tỉ mỉ thái độ
+            rất tốt rất đáng để mua sắm
           </p>
           <Flex justifyContent={"center"} className="pad-top-lap pad-top-mob">
             <Box className="feedback-avatar"></Box>
@@ -42,10 +42,9 @@ export default async function Feedback() {
             Tiết kiệm thời gian, tiết kiệm tiền bạc
           </Heading>
           <p>
-            &quot;Mua sắm ở đây nhanh thật tôi mới chỉ đưa ra cái sản phẩm mà họ
-            đã đoán được thứ tôi cần luôn rồi. Tiết kiệm được bao nhiêu là thời
-            gian các ngày dịp lễ có các chương trình khuyễn mãi giá rất
-            rẻ.&quot;
+            Mua sắm ở đây nhanh thật tôi mới chỉ đưa ra cái sản phẩm mà họ đã
+            đoán được thứ tôi cần luôn rồi. Tiết kiệm được bao nhiêu là thời
+            gian các ngày dịp lễ có các chương trình khuyễn mãi giá rất rẻ.
           </p>
           <Flex justifyContent={"center"} className="pad-top-lap pad-top-mob">
             <Box className="feedback-avatar"></Box>

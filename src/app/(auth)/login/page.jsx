@@ -191,7 +191,7 @@ export default function Login() {
               </Stack>
               <Stack textAlign={"center"}>
                 <p>
-                  You don&apos;t have an account yet?
+                  You dont have an account yet?
                   <Link style={{ color: "blue" }} href={"/sign-up"}>
                     SignUp
                   </Link>

@@ -182,7 +182,7 @@ export default function Contact() {
                         <FormLabel>Tel</FormLabel>
 
                         <InputGroup>
-                          <InputLeftAddon />
+                          <InputLeftAddon>+84</InputLeftAddon>
                           <Input
                             {...register("info.tel")}
                             type="tel"
