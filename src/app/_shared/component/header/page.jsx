@@ -18,9 +18,14 @@ import { headers } from "../../../../../next.config";
 import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
+import { RiShoppingCart2Fill } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
+import { totalQuantity } from "../../redux/cartSlice";
 
 export default async function HeaderPage() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const dispatch = useDispatch();
+  const totalItems = useSelector((state) => totalQuantity(state.cart));
 
   return (
     <>
@@ -69,9 +74,20 @@ export default async function HeaderPage() {
               alt="Dan Abramov"
             />
           </div>
-          <div className="mobie-login">
-            <BiUserCircle></BiUserCircle>
-          </div>
+
+          <Flex className="mobie-login" gap={"20px"} alignItems={"center"}>
+            <Box>
+              <BiUserCircle></BiUserCircle>
+            </Box>
+            <Link className="icon-shoping" href={"/cart"}>
+              <RiShoppingCart2Fill
+                fontSize={"24px"}
+                p={"5px"}
+                color="#f06a52"
+              ></RiShoppingCart2Fill>
+              <p className="totalItem">{totalItems}</p>
+            </Link>
+          </Flex>
 
           <Box className="nav-logo">
             <Link href={"/"}>
@@ -94,18 +110,21 @@ export default async function HeaderPage() {
               Liên hệ
             </Link>
           </Box>
-          <Box className="nav-search">
-            <Flex gap={"20px"}>
-              <Box>
-                <SearchForm />
-              </Box>
-              <Box>
-                <Button p={"0 25px"} backgroundColor={"#4FAA6D"}>
-                  <Link href={"/login"}>Đăng nhập</Link>
-                </Button>
-              </Box>
-            </Flex>
-          </Box>
+          <Flex gap={"20px"} alignItems={"center"} className="mobie-cart-hiden">
+            <Link className="icon-shoping" href={"/cart"}>
+              <RiShoppingCart2Fill
+                fontSize={"24px"}
+                p={"5px"}
+                color="#f06a52"
+              ></RiShoppingCart2Fill>
+              <p className="totalItem">{totalItems}</p>
+            </Link>
+            <Box>
+              <Button p={"0 25px"} className="btn">
+                <Link href={"/login"}>Đăng nhập</Link>
+              </Button>
+            </Box>
+          </Flex>
         </Flex>
       </div>
       <Box
@@ -115,15 +134,11 @@ export default async function HeaderPage() {
         backgroundPosition={"center"}
       >
         <div className="content-baner">
-        <Heading className="heading-baner">Tìm thứ bạn cần chỉ trong vài giây <br />
-        Cuộc sống thật dễ dàng với ShopCart
-        </Heading>
-        <p className="heading-sale" >
-          Siêu Sale 50% cuối tuần
-        </p>
-        <div className="btn-Baner">
-          <button>Khám phá ngay</button>
-        </div>
+          <div className="btn-Baner">
+            <Link href={"/products"}>
+              <Button className="btn">Khám Phá Ngay</Button>
+            </Link>
+          </div>
         </div>
       </Box>
     </>

@@ -7,6 +7,11 @@ import {
   GridItem,
   Heading,
   Spacer,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { BiLike, BiShieldAlt2, BiSolidTruck, BiTime } from "react-icons/bi";
@@ -15,11 +20,19 @@ import { AiTwotoneLock } from "react-icons/ai";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { PiShieldStarThin } from "react-icons/pi";
 import { getProductsByCatergory } from "../_shared/services/products.service";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import SaleUp from "../_shared/component/sale-upto/page";
+import SubTitle from "../_shared/component/sub-title/page";
+import Feedback from "../_shared/component/feedback/page";
 
 export default async function Home() {
   const [typeOfProducts, setTypeOfProducts] = useState("smartphones");
   const [filterProduct, setFilterProduct] = useState([]);
+
+  useEffect(() => {
+    // Khi component được tạo, gọi hàm handelFilter với typeOfProducts hiện tại
+    handelFilter(typeOfProducts);
+  }, []); // [] là dependency array, nếu bạn muốn gọi lại useEffect khi có sự thay đổi trong typeOfProducts, thì thêm typeOfProducts vào đây.
 
   const handelFilter = async (param) => {
     console.log(param);
@@ -35,150 +48,143 @@ export default async function Home() {
 
   return (
     <main>
-      <div className="transport-bg">
-        <Flex className="transport-item">
-          <Box>
-            <Flex gap={"10px"}>
-              <Box className="icon">
-                <BiSolidTruck></BiSolidTruck>
-              </Box>
-              <Box className="heading">
-                <Heading className="heading-title">Miễn phí vận chuyển</Heading>
-                <p>Với tất cả các đơn hàng trên 50$</p>
-              </Box>
-            </Flex>
+      <div>
+        <Flex justifyContent={"center"} className="gap-50-10 margin-50-10">
+          <Box className="relative">
+            <img src="Group 4.jpg" alt="" />
+            <div className="text-wap  absolute positionR">
+              <p>
+                Giao Hàng <br /> Nhanh Chóng & <br /> Thuận Tiện
+              </p>
+              <Link href={"/products"}>
+                <Button className="btn">Mua Ngay</Button>
+              </Link>
+            </div>
           </Box>
-          <Spacer />
-          <Box>
-            <Flex gap={"10px"}>
-              <Box className="icon">
-                <BiShieldAlt2></BiShieldAlt2>
-              </Box>
-              <Box className="heading">
-                <Heading className="heading-title">Bảo hành 30 ngày</Heading>
-                <p>Đảm bảo hoàn tiền trong 30 ngày</p>
-              </Box>
-            </Flex>
-          </Box>
-          <Spacer />
-          <Box>
-            <Flex gap={"10px"}>
-              <Box className="icon">
-                <TbWorld></TbWorld>
-              </Box>
-              <Box className="heading">
-                <Heading className="heading-title">Vận chuyển toàn cầu</Heading>
-                <p>Hỗ trợ vận chuyển toàn cầu</p>
-              </Box>
-            </Flex>
-          </Box>
-          <Spacer />
-          <Box>
-            <Flex gap={"10px"}>
-              <Box className="icon">
-                <AiTwotoneLock></AiTwotoneLock>
-              </Box>
-              <Box className="heading">
-                <Heading className="heading-title">An toàn 100%</Heading>
-                <p>Thanh toán an toàn 100%</p>
-              </Box>
-            </Flex>
+          <Box className="relative">
+            <img src="Group 5.jpg" alt="" />
+            <div className="text-wap positionL absolute">
+              <p>
+                Đặt Hàng <br /> Trên Ứng dụng <br /> CartShop
+              </p>
+              <Button className="btn">Đến Ứng Dụng</Button>
+            </div>
           </Box>
         </Flex>
       </div>
-      <div className="home-Container">
-        <Box textAlign={"center"}>
-          <Heading>Tại sao chọn chúng tôi</Heading>
-          <p>
-            Chúng tôi luôn luôn tự hào vì đem lại cho các bạn những trải nghiệm
-            mua sắm tuyệt vời, những sản phẩm chất lượng cùng với những ưu đãi
-            to lớn. Tìm những thứ bạn cần chỉ trong vòng vài giây, chúng tôi
-            không chỉ là một cửa hàng chúng tôi là câu chuyện của bạn, thật vinh
-            hạnh khi được đồng hành cùng các bạn.
-          </p>
-          <Grid
-            className="grid-template"
-            templateColumns="repeat(4, 1fr)"
-            gap={"60px"}
-            textAlign={"center"}
-            pt={"40px"}
-          >
-            <GridItem w="100%" bg="blue.500" className="girlItem">
-              <Flex justify={"center"} className="iconGrid">
-                <RiMoneyDollarCircleLine></RiMoneyDollarCircleLine>
-              </Flex>
-              <Heading className="headingGrid">Giá tốt nhất</Heading>
-              <p>Giá </p>
-            </GridItem>
-            <GridItem bg="blue.500" className="girlItem">
-              <Flex justify={"center"} className="iconGrid">
-                <PiShieldStarThin></PiShieldStarThin>
-              </Flex>
-              <Heading className="headingGrid">Dịch vụ tốt nhất</Heading>
-              <p>
-                Chúng tôi luôn luôn chú trọng đến trải nhiệm của khách hàng,
-                chính vì vậy chúng tôi tự hào là người đưa ra quá trình hay trải
-                nghiệm, dịch vụ mua sắm tuyệt vời và tốt nhất. Niềm vui của
-                khách hàng là hạnh phúc của chúng tôi.
-              </p>
-            </GridItem>
-            <GridItem bg="blue.500" className="girlItem">
-              <Flex justify={"center"} className="iconGrid">
-                <BiTime></BiTime>
-              </Flex>
-              <Heading className="headingGrid">Chuyển phát nhanh</Heading>
-              <p>
-                Là một đơn vị hàng đầu trong lĩnh vực Logictis với mạng lưới
-                trên khắp các tỉnh thành cả nước. Các sản phẩm của chúng tôi
-                được di chuyển 24/24h để giao đến khách hàng một cách nhanh
-                chóng. Cùng với sự phát triển công nghệ khách hàng có thể xem
-                trực tiếp vị trí của sản phẩm của mình.
-              </p>
-            </GridItem>
-            <GridItem bg="blue.500" className="girlItem">
-              <Flex justify={"center"} className="iconGrid">
-                <BiLike></BiLike>
-              </Flex>
-              <Heading className="headingGrid">Phản hồi tích cực</Heading>
-              <p>
-                Những lời phản hồi tích cực của khách hàng là động lực to lớn
-                dành cho chúng tôi.
-              </p>
-            </GridItem>
-          </Grid>
-        </Box>
-        <Box>
-          <button onClick={() => handelFilter("smartphones")}>
-            SmartPhone
-          </button>
-          <button onClick={() => handelFilter("laptops")}>Laptop</button>
-          <button onClick={() => handelFilter("motorcycle")}>Moto</button>
-          <button onClick={() => handelFilter("lighting")}>Light</button>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(5, 1fr)",
-              gap: 20,
-            }}
-          >
-            {filterProduct.map((product) => (
-              <Link key={product.id} href={`/products/${product.id}`}>
-                <article>
-                  <div className="products_List-item">
-                    <img
-                      className="product_Item-image"
-                      src={product.thumbnail}
-                      alt={product.title}
-                      style={{ maxWidth: "100%" }}
-                    />
-                    <h3 className="product_Item-heading">{product.title}</h3>
-                  </div>
-                </article>
-              </Link>
-            ))}
-          </div>
-        </Box>
+      <SubTitle />
+      <SaleUp />
+
+      <div>
+        <Box
+          className="backGroud"
+          backgroundImage={"Group 6.jpg"}
+          backgroundPosition={"center"}
+          backgroundSize={"cover"}
+        ></Box>
       </div>
+      <Box>
+        <Flex
+          justifyContent={"center"}
+          m={"50px"}
+          className="category-gap-lap category-gap-mob"
+        >
+          <Button
+            className="btn-category"
+            variant="outline"
+            onClick={() => handelFilter("smartphones")}
+          >
+            SmartPhones
+          </Button>
+          <Button
+            className="btn-category"
+            variant="outline"
+            onClick={() => handelFilter("laptops")}
+          >
+            Laptops
+          </Button>
+          <Button
+            className="btn-category"
+            variant="outline"
+            onClick={() => handelFilter("fragrances")}
+          >
+            Fragrances
+          </Button>
+          <Button
+            className="btn-category"
+            variant="outline"
+            onClick={() => handelFilter("home-decoration")}
+          >
+            Decoration
+          </Button>
+          <Button
+            className="btn-category"
+            variant="outline"
+            onClick={() => handelFilter("motorcycle")}
+          >
+            Moto
+          </Button>
+          <Button
+            className="btn-category"
+            variant="outline"
+            onClick={() => handelFilter("lighting")}
+          >
+            Light
+          </Button>
+        </Flex>
+        <div
+          className="grid-category-item"
+        
+        >
+          {filterProduct.map((product) => (
+            <Link
+              className="items-product-home"
+              key={product.id}
+              href={`/products/${product.id}`}
+            >
+              <article>
+                <div className="products_List-item">
+                  <img
+                    className="product_Item-image"
+                    src={product.thumbnail}
+                    alt={product.title}
+                    style={{ maxWidth: "100%" }}
+                  />
+                  <Flex p={"30px"} className="category-pad-lap category-pad-mob">
+                    <Box>
+                      <h3
+                        style={{
+                          fontFamily: "cursive",
+                        }}
+                      >
+                        {product.title}
+                      </h3>
+                    </Box>
+                    <Spacer />
+                    <Box>
+                      <h3
+                        style={{
+                          fontFamily: "cursive",
+                          color: "#fea700",
+                        }}
+                      >
+                        ${product.price}
+                      </h3>
+                    </Box>
+                  </Flex>
+                </div>
+              </article>
+            </Link>
+          ))}
+        </div>
+        <Flex justifyContent={"center"} m={"50px"}>
+          <Link href={"/products"}>
+            <Button className="btn">More Products</Button>
+          </Link>
+        </Flex>
+      </Box>
+
+      <Feedback />
     </main>
   );
 }

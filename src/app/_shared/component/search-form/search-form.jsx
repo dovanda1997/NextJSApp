@@ -14,6 +14,7 @@ export default function SearchForm() {
     e.preventDefault();
 
     router.push(`/products/search?query=${query}`);
+    setQuery(" ");
   };
 
   return (

@@ -156,14 +156,7 @@ export default async function ProductList({ products }) {
           </Accordion>
         </Box>
         <Box>
-          <div
-            className="list-products"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 20,
-            }}
-          >
+          <div className="list-products grid-list-product">
             {filterProduct.map((product) => (
               <Link
                 key={product.id}

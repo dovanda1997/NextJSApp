@@ -2,12 +2,20 @@
 import React, { useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
-import { Box, Button, Flex, Grid, GridItem, border } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Grid,
+  GridItem,
+  Image,
+  border,
+} from "@chakra-ui/react";
 import { GrNext, GrPrevious } from "react-icons/gr";
 import { redirect } from "next/dist/server/api-utils";
 
 export const ProductImageCarousel = ({ images }) => {
-  const slicedImages = images.slice(0, 4);
+  const slicedImages = images?.slice(0, 4) || [];
   const [emblaRef] = useEmblaCarousel({ loop: true });
   const [activeItem, setActiveItem] = useState(slicedImages[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,11 +36,7 @@ export const ProductImageCarousel = ({ images }) => {
   return (
     <>
       <Box>
-        <Flex
-          alignItems={"center"}
-          justifyContent={"space-between"}
-          gap={"15px"}
-        >
+        <Flex alignItems={"center"} justifyContent={"space-between"}>
           <Box>
             <GrPrevious
               className="icon-Previous"
@@ -42,11 +46,19 @@ export const ProductImageCarousel = ({ images }) => {
           </Box>
           <Box
             className="imgDetail"
-            backgroundImage={activeItem}
-            backgroundSize={"cover"}
-            backgroundPosition={"center"}
-            backgroundRepeat={"no-repeat"}
-          ></Box>
+
+            // backgroundImage={activeItem}
+            // backgroundSize={"cover"}
+            // backgroundPosition={"center"}
+            // backgroundRepeat={"no-repeat"}
+          >
+            <Image
+              className="img-carousel"
+              objectFit="cover"
+              src={activeItem}
+              alt="Dan Abramov"
+            />
+          </Box>
           <Box>
             <GrNext
               className="icon-Next"
@@ -57,9 +69,9 @@ export const ProductImageCarousel = ({ images }) => {
         </Flex>
       </Box>
       <div className="imgList">
-        <Grid templateColumns="repeat(4, 1fr)" gap="30px">
+        <Grid className="grid-img-carousel">
           {slicedImages.map((item, index) => (
-            <Button
+            <Box
               key={index}
               onClick={() => {
                 setActiveItem(item);
@@ -73,16 +85,19 @@ export const ProductImageCarousel = ({ images }) => {
             >
               <Box
                 className="img-list-detail"
-                backgroundImage={item}
-                backgroundPosition={"center"}
-                backgroundSize={"cover"}
-              ></Box>
+                // backgroundImage={item}
+                // backgroundPosition={"center"}
+                // backgroundSize={"cover"}
+                // objectFit={"cover"}
+              >
+                <Image className="img-carousel" src={item} objectFit="cover" />
+              </Box>
               {/* <img
                   style={{ width: "200px", height: "100px" }}
                   src={item}
                   alt=""
                 /> */}
-            </Button>
+            </Box>
           ))}
         </Grid>
       </div>
