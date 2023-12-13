@@ -81,7 +81,12 @@ export default async function Home() {
           backgroundImage={"Group 6.jpg"}
           backgroundPosition={"center"}
           backgroundSize={"cover"}
-        ></Box>
+        >
+          <Box className="content-backGroud">
+            <Heading className="content-backGroud-title">5% refund for orders of 200</Heading>
+            <p className="title-phu">Shop comfortably without worrying about price</p>
+          </Box>
+        </Box>
       </div>
       <Box>
         <Flex
@@ -132,10 +137,7 @@ export default async function Home() {
             Light
           </Button>
         </Flex>
-        <div
-          className="grid-category-item"
-        
-        >
+        <div className="grid-category-item">
           {filterProduct.map((product) => (
             <Link
               className="items-product-home"
@@ -150,7 +152,10 @@ export default async function Home() {
                     alt={product.title}
                     style={{ maxWidth: "100%" }}
                   />
-                  <Flex p={"30px"} className="category-pad-lap category-pad-mob">
+                  <Flex
+                    p={"30px"}
+                    className="category-pad-lap category-pad-mob"
+                  >
                     <Box>
                       <h3
                         style={{

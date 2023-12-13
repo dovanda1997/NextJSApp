@@ -8,7 +8,12 @@ import {
 
 export default function Footer() {
   return (
-    <footer>
+    <footer
+      style={{
+        backgroundColor: "#f7f4f1",
+        marginTop: "100px",
+      }}
+    >
       <div className="footer-top">
         <div className="flex-footer">
           <Box className="logoFooter">
@@ -25,7 +30,11 @@ export default function Footer() {
           </Box>
           <Spacer />
           <Box>
-            <Heading className="headingFooter" size="md"  fontFamily={"sans-serif"}>
+            <Heading
+              className="headingFooter"
+              size="md"
+              fontFamily={"sans-serif"}
+            >
               Suport
             </Heading>
             <div className="content-footer">
@@ -38,7 +47,11 @@ export default function Footer() {
           </Box>
           <Spacer />
           <Box>
-            <Heading  className="headingFooter" size="md"  fontFamily={"sans-serif"}>
+            <Heading
+              className="headingFooter"
+              size="md"
+              fontFamily={"sans-serif"}
+            >
               About
             </Heading>
             <div className="content-footer">
@@ -49,7 +62,11 @@ export default function Footer() {
           </Box>
           <Spacer />
           <Box>
-            <Heading className="headingFooter" size="md"  fontFamily={"sans-serif"}>
+            <Heading
+              className="headingFooter"
+              size="md"
+              fontFamily={"sans-serif"}
+            >
               Contact
             </Heading>
             <p>Hãy để lại cho chúng tôi những thắc mắc của bạn tại đây</p>

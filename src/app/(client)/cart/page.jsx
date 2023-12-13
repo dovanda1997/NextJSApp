@@ -22,12 +22,16 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AiFillDelete } from "react-icons/ai";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default async function Cart() {
   const dispatch = useDispatch();
+  const [showEmptyCartAlert, setShowEmptyCartAlert] = useState(false);
+  const router = useRouter();
 
   //Sử dụng useSelector để lấy dữ liệu từ Redux store, trong trường hợp này là thông tin giỏ hàng
   const cartState = useSelector((state) => state.cart);
@@ -59,6 +63,21 @@ export default async function Cart() {
   };
   //Trong trường hợp này, cartState.items chứa danh sách các mục trong giỏ hàng
   const items = cartState.items;
+  console.log(items);
+
+  const handleCheckout = () => {
+    if (cartState.items.length === 0) {
+      // Nếu giỏ hàng trống, hiển thị thông báo
+      setShowEmptyCartAlert(true);
+    } else {
+      // Nếu giỏ hàng không trống, chuyển hướng đến trang Checkout
+      router.push("/checkout");
+    }
+  };
+  const handleHome = () => {
+    setShowEmptyCartAlert(false);
+    router.push("/");
+  };
 
   return (
     <section className="container-Cart">
@@ -164,6 +183,21 @@ export default async function Cart() {
                   </Tr>
                 );
               })}
+              {showEmptyCartAlert && (
+                <div className="alert-item">
+                  <p
+                    style={{
+                      color: "#f06a52",
+                    }}
+                  >
+                    Giỏ hàng của bạn đang trống!
+                  </p>
+                  <p className="pd-30">Mời bạn đến trang sản phẩm để mua sắm</p>
+                  <Button className="btn" onClick={handleHome}>
+                    Mua sắm
+                  </Button>
+                </div>
+              )}
             </Tbody>
           </Table>
         </TableContainer>
@@ -177,7 +211,8 @@ export default async function Cart() {
                   ${totalPrice}
                 </Heading>
               </Box>
-              <Button colorScheme="teal" size="lg">
+
+              <Button onClick={handleCheckout} colorScheme="teal" size="lg">
                 CheckOut
               </Button>
             </Box>
